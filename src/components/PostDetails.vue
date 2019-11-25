@@ -3,7 +3,7 @@
       {{post.title}}<br>
       {{post.id}}<br>
       {{post.body}}<br>
-     
+      <button @click="deletePost(post)">Delete post</button>
   </div>
 </template>
 
@@ -15,6 +15,11 @@ export default {
             required: true,
         }
     },
+    methods: {
+        deletePost(post) {
+            this.$emit('deletePost', post);
+        }
+    }
     
 }
 </script>

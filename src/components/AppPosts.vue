@@ -2,7 +2,7 @@
   <div>
     <ul v-for="(post, index) in posts" :key="index">
         <li>
-            <PostDetails :post = "post">
+            <PostDetails :post = "post" @deletePost = "deletePost">
             </PostDetails>
         </li>
     </ul>
@@ -20,6 +20,11 @@ export default {
     data () {
         return {
             posts: []
+        }
+    },
+    methods: {
+        deletePost(post) {
+            postService.deletePost(this.posts, post);
         }
     },
     created() {

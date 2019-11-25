@@ -9,6 +9,10 @@ export default class PostService {
     getPosts() {
         return axios.get('posts');
     }
+
+    deletePost(posts,post) {
+        posts.splice( posts.indexOf(post), 1 );
+    }
     
 }
 
