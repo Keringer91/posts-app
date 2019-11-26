@@ -10,10 +10,14 @@ export default class PostService {
         return axios.get('posts');
     }
 
-    deletePost(posts,post) {
+    deletePost(posts, post) {
         posts.splice( posts.indexOf(post), 1 );
     }
-    
+
+    addNewPost(posts, post) {
+        post.id = posts[posts.length - 1].id + 1;
+        posts.push(post);
+    }
 }
 
 

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <AddNewPost @addNewPost = "addNewPost"></AddNewPost>  
     <ul v-for="(post, index) in posts" :key="index">
         <li>
             <PostDetails :post = "post" @deletePost = "deletePost">
@@ -11,11 +12,13 @@
 
 <script>
 import { postService } from '../services/PostService'
-import PostDetails from '../components/PostDetails.vue' 
+import PostDetails from '../components/PostDetails.vue'
+import AddNewPost from  '../components/AddNewPost.vue'
 
 export default {
     components: {
-      PostDetails  
+      PostDetails,
+      AddNewPost  
     },
     data () {
         return {
@@ -25,6 +28,9 @@ export default {
     methods: {
         deletePost(post) {
             postService.deletePost(this.posts, post);
+        },
+       addNewPost(post) {
+            postService.addNewPost(this.posts, post);
         }
     },
     created() {
